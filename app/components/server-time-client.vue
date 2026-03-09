@@ -17,13 +17,12 @@ useHead({
   script: [
     {
       type: "application/ld+json",
-      textContent: computed(() =>
+      textContent: () =>
         JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebPage",
           dateModified: modifiedTime.value,
         }),
-      ),
     },
   ],
 });
