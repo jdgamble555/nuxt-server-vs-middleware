@@ -1,1 +1,1 @@
-<template>Hello World! It is now <Server-Time /></template>
+<template>Hello World! <Server-Time /></template>
