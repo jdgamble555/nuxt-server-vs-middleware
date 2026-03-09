@@ -1,5 +1,5 @@
 export default defineEventHandler(() => {
     return {
-        now: new Date().toLocaleString(),
+        now: new Date().toISOString(),
     }
 })
