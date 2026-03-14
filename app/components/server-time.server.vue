@@ -27,5 +27,8 @@ useHead({
 </script>
 
 <template>
-  <div>Server time: {{ modifiedTime }}</div>
+  <div class="flex flex-col gap-4 items-center">
+    <div>Server time: {{ modifiedTime }}</div>
+    <slot />
+  </div>
 </template>

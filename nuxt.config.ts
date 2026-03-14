@@ -5,7 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['./app/assets/css/main.css'],
   experimental: {
-    componentIslands: true,
+    componentIslands: {
+      selectiveClient: 'deep',
+    },
   },
   vite: {
     plugins: [

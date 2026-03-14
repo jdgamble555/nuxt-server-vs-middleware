@@ -30,4 +30,5 @@ useHead({
 
 <template>
   <div v-if="data">Server time: {{ data.now }}</div>
+  <Validate />
 </template>
