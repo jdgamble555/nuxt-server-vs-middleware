@@ -1,17 +1,17 @@
 <script setup lang="ts">
-const { data } = await useFetch<{ now: string }>("/api/time");
-
-const modifiedTime = computed(() => data.value?.now ?? "");
+const modifiedTime = await useAsyncData("time", async () => {
+  return new Date().toISOString();
+});
 
 useHead({
   meta: [
     {
       property: "article:modified_time",
-      content: modifiedTime,
+      content: modifiedTime.data.value,
     },
     {
       name: "last-modified",
-      content: modifiedTime,
+      content: modifiedTime.data.value,
     },
   ],
   script: [
@@ -21,7 +21,7 @@ useHead({
         JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebPage",
-          dateModified: modifiedTime.value,
+          dateModified: modifiedTime.data.value,
         }),
     },
   ],
@@ -29,6 +29,6 @@ useHead({
 </script>
 
 <template>
-  <div v-if="data">Server time: {{ data.now }}</div>
+  <div v-if="modifiedTime.data">Server time: {{ modifiedTime.data.value }}</div>
   <Validate />
 </template>
